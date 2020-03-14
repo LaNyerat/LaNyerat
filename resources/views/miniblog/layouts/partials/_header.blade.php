@@ -9,22 +9,23 @@
 <header class="site-navbar" role="banner">
 	<div class="container-fluid">
 		<div class="row align-items-center">
-			
-			<div class="col-12 search-form-wrap js-search-form">
+			<!-- Search? Can't be used, we need improve this later -->
+			{{-- <div class="col-12 search-form-wrap js-search-form active">
 				<form method="get" action="#">
 					<input type="text" id="s" class="form-control" placeholder="Search...">
 					<button class="search-btn" type="submit"><span class="icon-search"></span></button>
 				</form>
-			</div>
+			</div> --}}
 
 			<div class="col-4 site-logo">
-				<a href="index.html" class="text-black h2 mb-0">{{ config('cms.name') }}</a>
+				<a href="{{ route('ln.home.index') }}" class="text-black h2 mb-0">{{ config('cms.name') }}</a>
 			</div>
 
 			<div class="col-8 text-right">
 				<nav class="site-navigation" role="navigation">
 					<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
-						<li><a href="category.html">Home</a></li>
+						<li class="nav-item"><a href="{{ route('ln.home.index') }}">Home</a></li>
+						<li class="js-search-toggle"><a href="#">H</a></li>
 						@guest
 							<li class="nav-item dropdown">
 								<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -58,11 +59,14 @@
 </header>
 
 {{-- Auth form post --}}
+@auth
 <form class="logout-form" action="{{ route('ln.auth.logout') }}" method="post" style="display: none">
 	@csrf
 	<button type="submit">Submit</button>
 </form>
+@endauth
 
+@guest
 <form class="login-form-github" action="{{ route('ln.auth.redirect', 'github') }}" method="post" style="display: none">
 	@csrf
 	<button type="submit">Submit</button>
@@ -72,3 +76,4 @@
 	@csrf
 	<button type="submit">Submit</button>
 </form>
+@endguest

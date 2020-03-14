@@ -30,4 +30,17 @@ class BlogController extends Controller
     {
         return $this->postService->showPostSingle($post);
     }
+
+    /**
+     * Searching by tags and title
+     * 
+     * More query soon bruh
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function showBySearch(Request $request)
+    {
+        return $this->postService->showBySearch($request);
+    }
 }

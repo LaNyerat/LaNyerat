@@ -1,6 +1,5 @@
 <?php
 
-use App\Post;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -12,3 +11,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'MainController@showBlogIndex')->name('home.index');
 
 Route::get('show/{post}', 'BlogController@showPostSingle')->name('blog.post');
+Route::get('search', 'BlogController@showBySearch')->name('blog.search');

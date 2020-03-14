@@ -7,7 +7,7 @@
         <div class="col-md-12 col-lg-10">
           <div class="post-entry text-center">
             @foreach($post->tags as $tag)
-            <span class="post-category text-white bg-success mb-3">{{ $tag->name }}</span>
+            <a href="{{ route('ln.blog.search') }}?tag={{ $tag->name }}"><span class="post-category text-white bg-success mb-3">#{{ $tag->name }}</span></a>
             @endforeach
           <h1 class="mb-4">{{ $post->title }}</h1>
             <div class="post-meta align-items-center text-center">
@@ -34,7 +34,7 @@
 
           
           <div class="pt-5">
-            <p>Tags:  @foreach($post->tags as $tag) <a href="#">{{ $tag->name }}</a>@endforeach</p>
+            <p>Tags:  @foreach($post->tags as $tag) <a href="{{ route('ln.blog.search') }}?tag={{ $tag->name }}">#{{ $tag->name }}</a>@endforeach</p>
           </div>
 
           {{-- Comment --}}
@@ -205,8 +205,8 @@
           <div class="sidebar-box">
             <h3 class="heading">Tags</h3>
             <ul class="tags">
-              @foreach(\App\Tag::with('posts')->latest()->limit(20)->get() as $tag)
-                <li><a href="#">#{{ $tag->name }}</a></li>
+              @foreach($tags as $tag)
+                <li><a href="{{ route('ln.blog.search') }}?tag={{ $tag->name }}">#{{ $tag->name }}</a></li>
               @endforeach
             </ul>
           </div>
