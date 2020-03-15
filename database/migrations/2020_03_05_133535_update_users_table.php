@@ -20,14 +20,17 @@ class UpdateUsersTable extends Migration
             $table->string('username')
                   ->after('remember_token');
             $table->string('avatar')
+                  ->nullable()
                   ->after('username');
             $table->string('bio')
+                  ->nullable()
                   ->after('avatar');
             $table->string('provider')
                   ->after('bio');
             $table->string('provider_id')
                   ->after('provider');
             $table->string('social_link')
+                  ->nullable()
                   ->after('provider_id');
             $table->softDeletes();
         });

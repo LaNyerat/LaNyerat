@@ -1,4 +1,4 @@
-@extends('miniblog.layouts.app')
+@extends('miniblog.layouts.app', ['title' => $post->title])
 @section('content')
 @include('miniblog.layouts.partials._header')
 <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('{{ asset('storage/images/' . $post->image) }}');">
@@ -169,7 +169,7 @@
             <img src="{{ asset('storage/avatar/' . $post->user->avatar) }}" alt="{{ $post->user->name }}" class="img-fluid mb-5">
               <div class="bio-body">
                 <h2>{{ $post->user->name }}</h2>
-              <p class="mb-4">{{ $post->user->bio }}</p>
+              <p class="mb-4">{!! $post->user->bio !!}</p>
                 <p class="social">
                   <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
                   <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>

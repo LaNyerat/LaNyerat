@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>{{ env('CMS_NAME') }}</title>
+	<title>{!! (isset($title) ? $title . ' - ' : '') . config('cms.name', 'LaNyerat') !!}</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 

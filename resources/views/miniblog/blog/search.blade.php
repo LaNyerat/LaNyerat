@@ -1,4 +1,4 @@
-@extends('miniblog.layouts.app') 
+@extends('miniblog.layouts.app', ['title' => 'Search result for ' . $title]) 
 @section('content')
 @include('miniblog.layouts.partials._header')
 <div class="site-section">
